@@ -1,5 +1,7 @@
 package Windows.Admin;
 
+import Windows.Admin.Refactored.LogisticsManagementRefactored;
+import Windows.Admin.Refactored.UserManagementRefactored;
 import Windows.Index;
 
 import javax.swing.*;
@@ -129,14 +131,14 @@ public class AdminWindow extends JFrame {
         // btn2 open logistic management
         btn2.addActionListener(e -> {
             dispose();
-            LogisticsManagement lmanage = new LogisticsManagement();
+            LogisticsManagementRefactored lmanage = new LogisticsManagementRefactored();
             lmanage.setVisible(true);
         });
 
         // btn3 open DoSurveys window
         btn3.addActionListener(e -> {
             dispose();
-            UserManagement umanage = new UserManagement();
+            UserManagementRefactored umanage = new UserManagementRefactored();
             umanage.setVisible(true);
         });
 

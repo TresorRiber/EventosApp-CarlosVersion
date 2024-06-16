@@ -1,6 +1,7 @@
 package Windows.User;
 
 import Windows.Index;
+import Windows.User.Refactored.BuyTicketsRefactored;
 
 import javax.swing.*;
 import java.awt.*;
@@ -123,7 +124,7 @@ public class UserWindow extends JFrame {
         // btn1 open BuyTickets window
         btn1.addActionListener(e -> {
             dispose();
-            BuyTickets buyTicket = new BuyTickets();
+            BuyTicketsRefactored buyTicket = new BuyTicketsRefactored();
             buyTicket.setVisible(true);
         });
 

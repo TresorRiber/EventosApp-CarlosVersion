@@ -83,15 +83,15 @@ public class UserWindowRefactored extends JFrame {
 
         JButton buyTicketsButton = createButton("Buy Tickets", buttonSize, e -> {
             dispose();
-            new BuyTickets().setVisible(true);
+            new BuyTicketsRefactored().setVisible(true);
         });
         JButton commentsButton = createButton("Comments", buttonSize, e -> {
             dispose();
-            new MakeComments().setVisible(true);
+            new MakeCommentsRefactored().setVisible(true);
         });
         JButton surveysButton = createButton("Surveys", buttonSize, e -> {
             dispose();
-            new DoSurveys(1).setVisible(true);
+            new DoSurveysRefactored(1).setVisible(true);
         });
 
         middleCenterPanel.setLayout(new GridLayout(3, 1));

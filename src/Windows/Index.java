@@ -2,6 +2,7 @@ package Windows;
 
 import Main.ConnDB;
 import Windows.Admin.AdminWindow;
+import Windows.Admin.Refactored.AdminWindowRefactored;
 import Windows.User.UserNotLoggedWindow;
 import Windows.User.UserWindow;
 import javax.swing.*;
@@ -197,7 +198,7 @@ public class Index extends JFrame {
     }
 
     private void openAdminPage() {
-        AdminWindow adminWindow = new AdminWindow();
+        AdminWindowRefactored adminWindow = new AdminWindowRefactored();
         adminWindow.setVisible(true);
         dispose();
     }

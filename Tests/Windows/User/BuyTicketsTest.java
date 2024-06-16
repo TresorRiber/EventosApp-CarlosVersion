@@ -1,44 +1,78 @@
 package Windows.User;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import javax.swing.*;
 
-class BuyTicketsTest {
+import java.awt.*;
 
-    @org.junit.jupiter.api.Test
-    void addElements() {
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class BuyTicketsTest {
+
+    private BuyTickets buyTickets;
+
+    @BeforeEach
+    public void setUp() {
+        buyTickets = new BuyTickets();
+        buyTickets.setVisible(true); // Make the frame visible for testing
     }
 
-    @org.junit.jupiter.api.Test
-    void addPanels() {
+    @AfterEach
+    public void tearDown() {
+        buyTickets.dispose();
     }
 
     @Test
-    void testAddElements() {
+    public void testFrameTitle() {
+        assertEquals("Buy tickets", buyTickets.getTitle());
     }
 
     @Test
-    void testAddPanels() {
+    public void testPanelsExistence() {
+        assertNotNull(buyTickets.northPanel);
+        assertNotNull(buyTickets.centerPanel);
+        assertNotNull(buyTickets.upperCenterPanel);
+        assertNotNull(buyTickets.middleCenterPanel);
+        assertNotNull(buyTickets.lowerCenterPanel);
+        assertNotNull(buyTickets.southPanel);
+    }
+
+
+    @Test
+    public void testLogoutButton() {
+        JButton logoutButton = findButtonByText(buyTickets.southPanel, "Logout");
+        assertNotNull(logoutButton);
+
+        // Simulate button click
+        logoutButton.doClick();
+        assertFalse(buyTickets.isVisible());
     }
 
     @Test
-    public void testAddJComboBox() {
-        // Creamos una instancia de BuyTickets
-        BuyTickets buyTickets = new BuyTickets();
+    public void testReturnButton() {
+        JButton returnButton = findButtonByText(buyTickets.southPanel, "Return");
+        assertNotNull(returnButton);
 
-        // Verificamos que JComboBox no sea nulo
-        assertNotNull(buyTickets.select);
+        // Simulate button click
+        returnButton.doClick();
+    }
 
-        // Verificamos que JComboBox esté vacío inicialmente
-        assertEquals(0, buyTickets.select.getItemCount());
-
-        // Llamamos al método addJComboBox() que queremos probar
-        buyTickets.addJComboBox();
-
-        // Verificamos que JComboBox se haya inicializado correctamente y tenga los elementos esperados
-        assertNotNull(buyTickets.select);
-        assertEquals(5, buyTickets.select.getItemCount()); // Suponiendo que hay 3 elementos en la lista de nombres de eventos
+    private JButton findButtonByText(Container container, String text) {
+        for (Component component : container.getComponents()) {
+            if (component instanceof JButton && text.equals(((JButton) component).getText())) {
+                return (JButton) component;
+            }
+            if (component instanceof Container) {
+                JButton button = findButtonByText((Container) component, text);
+                if (button != null) {
+                    return button;
+                }
+            }
+        }
+        return null;
     }
 }

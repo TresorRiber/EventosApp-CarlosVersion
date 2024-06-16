@@ -29,7 +29,7 @@ public class DoSurveys extends JFrame {
 
     // List of surveys
     private final List<Encuesta> encuestas;
-    private final List<JPanel> surveyPanels;
+    final List<JPanel> surveyPanels;
     private final int userId;
     ConnDB connDB;
 
