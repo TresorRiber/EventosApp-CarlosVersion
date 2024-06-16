@@ -5,11 +5,9 @@ import Windows.Index;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
-public class UserNotLogedWindow extends JFrame {
+public class UserNotLoggedWindow extends JFrame {
     JPanel northPanel = new JPanel();
     JPanel centerPanel = new JPanel();
     JPanel upperCenterPanel = new JPanel();
@@ -24,9 +22,9 @@ public class UserNotLogedWindow extends JFrame {
     ConnDB connDB;
 
     // Constructor
-    public UserNotLogedWindow() {
+    public UserNotLoggedWindow() {
         // Set JFrame properties
-        setTitle("User Not Loged");
+        setTitle("User Not Logged");
         setSize(400, 800);
         setResizable(true);
         setLocationRelativeTo(null);
@@ -95,7 +93,7 @@ public class UserNotLogedWindow extends JFrame {
     // Method to add labels
     private void addLabels() {
         // Welcome label
-        JLabel label1 = new JLabel("User Not Loged");
+        JLabel label1 = new JLabel("User Not Logged");
         label1.setFont(new Font("Arial", Font.BOLD, 20));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         upperCenterPanel.add(label1, BorderLayout.NORTH);

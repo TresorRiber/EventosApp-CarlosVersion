@@ -97,13 +97,13 @@ public class CreateEvents extends JFrame {
 
     // Add form elements to capture event details
     private void addEventForm() {
-        JLabel nombreLabel = new JLabel("Nombre del Evento:");
+        JLabel nombreLabel = new JLabel("Event Name:");
         nombreField = new JTextField(20);
 
-        JLabel fechaInicioLabel = new JLabel("Fecha de Inicio (yyyy-mm-dd):");
+        JLabel fechaInicioLabel = new JLabel("Start Date (yyyy-mm-dd):");
         fechaInicioField = new JTextField(20);
 
-        JLabel fechaFinalizacionLabel = new JLabel("Fecha de Finalización (yyyy-mm-dd):");
+        JLabel fechaFinalizacionLabel = new JLabel("End Date (yyyy-mm-dd):");
         fechaFinalizacionField = new JTextField(20);
 
         // Add form elements to the middleCenterPanel

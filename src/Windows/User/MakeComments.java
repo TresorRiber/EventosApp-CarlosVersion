@@ -3,6 +3,8 @@ package Windows.User;
 import Main.ConnDB;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,7 +52,7 @@ public class MakeComments extends JFrame {
         centerPanel = new JPanel(new BorderLayout());
         upperCenterPanel = addCreatePanel(Color.LIGHT_GRAY, 400, 90);
         middleCenterPanel = addCreatePanel(Color.WHITE, 400, 160);
-        lowerCenterPanel = addCreatePanel(Color.WHITE, 400, 150);
+        lowerCenterPanel = addCreatePanel(Color.WHITE, 400, 160);
         southPanel = addCreatePanel(Color.WHITE, 400, 150);
 
         // Add panels to the mainPanel
@@ -72,9 +74,8 @@ public class MakeComments extends JFrame {
 
 
         // Center panel
-        JPanel centerPanel = lowerCenterPanel;
-        addCenterSection(centerPanel);
-
+        JPanel center = lowerCenterPanel;
+        addCenterSection(center);
 
         // South panel
         JPanel south = southPanel;
@@ -107,6 +108,7 @@ public class MakeComments extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 clearHistory();
+                clearFields();
             }
         });
         southPanel.add(clearButton);
@@ -123,18 +125,18 @@ public class MakeComments extends JFrame {
     }
 
     private void addWestSection(JPanel westPanel) {
-        JPanel gridPanel = new JPanel(new GridLayout(4, 1, 5, 5));
-        gridPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JPanel gridPanel = new JPanel(new GridLayout(4, 1, 4, 4));
+        gridPanel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
         gridPanel.add(new JLabel("Leave your comments:"));
         commentsField = new JTextField();
         gridPanel.add(commentsField);
 
-        gridPanel.add(new JLabel("Insert Id Usuario:"));
+        gridPanel.add(new JLabel("Insert User Id:"));
         idUsuarioField = new JTextField();
         gridPanel.add(idUsuarioField);
 
-        gridPanel.add(new JLabel("Insert Id Evento:"));
+        gridPanel.add(new JLabel("Insert Event Id:"));
         idEventoField = new JTextField();
         gridPanel.add(idEventoField);
 
@@ -143,17 +145,17 @@ public class MakeComments extends JFrame {
         gridPanel.add(ratingField);
 
         westPanel.add(gridPanel, BorderLayout.NORTH);
+
     }
 
 
-    private void addCenterSection(JPanel centerPanel) {
-        commentsHistory = new JTextArea();
+    private void addCenterSection(JPanel center) {
+        commentsHistory = new JTextArea(8,30);
         commentsHistory.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(commentsHistory);
-        scrollPane.setSize(150,150);
-        centerPanel.add(scrollPane);
-    }
+        center.add(scrollPane);
 
+    }
     private void saveComment() {
         String comment = commentsField.getText().trim();
         String idUsuarioText = idUsuarioField.getText().trim();
@@ -173,9 +175,8 @@ public class MakeComments extends JFrame {
             boolean success = connDB.insertComment(comment, idUsuario, idEvento, rating);
             if (success) {
                 commentsList.add(comment);
-                JOptionPane.showMessageDialog(this, "Error al guardar el comentario.", "Error", JOptionPane.ERROR_MESSAGE);
                 updateHistory();
-                clearFields();
+                JOptionPane.showMessageDialog(this, "Error al guardar el comentario.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Comment insert correctly");
             }
@@ -201,7 +202,8 @@ public class MakeComments extends JFrame {
     }
 
     private void updateHistory() {
-        commentsHistory.setText("");
+        String history = commentsField.getText();
+        commentsHistory.setText(history);
         for (String comment : commentsList) {
             commentsHistory.append(comment + "\n");
         }
@@ -225,7 +227,4 @@ public class MakeComments extends JFrame {
         dispose();
     }
 
-    public static void main(String[] args) {
-        MakeComments m = new MakeComments();
-    }
 }

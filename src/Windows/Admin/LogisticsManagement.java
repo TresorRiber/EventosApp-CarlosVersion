@@ -115,10 +115,10 @@ public class LogisticsManagement extends JFrame {
 
                 boolean success = connDB.insertData(tar, des, hor, tip);
                 if (success) {
-                    JOptionPane.showMessageDialog(null, "Transporte insertado correctamente");
+                    JOptionPane.showMessageDialog(null, "Transport inserted");
                     eventoAgregado();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Algún valor no es correcto");
+                    JOptionPane.showMessageDialog(null, "Some value not correct");
                 }
             }
         });
@@ -153,19 +153,19 @@ public class LogisticsManagement extends JFrame {
         cubo.setLayout(new GridLayout(4, 1, 5, 5));
         cubo.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-        cubo.add(new JLabel("Tarifa (number)"));
+        cubo.add(new JLabel("Fee (number)"));
         tarifa = new JTextField(15);
         cubo.add(tarifa);
 
-        cubo.add(new JLabel("Descripcion"));
+        cubo.add(new JLabel("Description"));
         descripcion = new JTextField(15);
         cubo.add(descripcion);
 
-        cubo.add(new JLabel("Horarios"));
+        cubo.add(new JLabel("Schedules"));
         horarios = new JTextField(15);
         cubo.add(horarios);
 
-        cubo.add(new JLabel("Tipo"));
+        cubo.add(new JLabel("Type"));
         tipo = new JTextField(15);
         cubo.add(tipo);
 

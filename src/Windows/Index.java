@@ -2,14 +2,13 @@ package Windows;
 
 import Main.ConnDB;
 import Windows.Admin.AdminWindow;
-import Windows.User.UserNotLogedWindow;
+import Windows.User.UserNotLoggedWindow;
 import Windows.User.UserWindow;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Index extends JFrame {
@@ -119,7 +118,7 @@ public class Index extends JFrame {
         withoutRegistration.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserNotLogedWindow user= new UserNotLogedWindow();
+                UserNotLoggedWindow user= new UserNotLoggedWindow();
                 user.setVisible(true);
             }
         });

@@ -116,11 +116,14 @@ public class ConnDB {
     public List<String> allUsers(){
         List<String> users = new ArrayList<>();
         try{
-            String sql ="SELECT IDUSUARIO FROM USUARIO where IDUSUARIO IS NOT NULL";
+            String sql ="SELECT IDUSUARIO, NOMBRE, APELLIDO, EMAIL FROM USUARIO where IDUSUARIO is not null";
             PreparedStatement select = connection.prepareStatement(sql);
             ResultSet result = select.executeQuery(sql);
             while(result.next()){
                 users.add(String.valueOf(result.getInt("IDUSUARIO")));
+                users.add(result.getString("NOMBRE"));
+                users.add(result.getString("APELLIDO"));
+                users.add(result.getString("EMAIL"));
             }
             return users;
         } catch (SQLException e) {

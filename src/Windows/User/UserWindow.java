@@ -123,8 +123,8 @@ public class UserWindow extends JFrame {
         // btn1 open BuyTickets window
         btn1.addActionListener(e -> {
             dispose();
-            BuyTickets buyTickets = new BuyTickets();
-            buyTickets.setVisible(true);
+            BuyTickets buyTicket = new BuyTickets();
+            buyTicket.setVisible(true);
         });
 
         // btn2 open MakeComments window
